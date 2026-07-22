@@ -1,0 +1,44 @@
+.wrap {
+  margin-bottom: clamp(var(--space-8), 5vw, var(--space-12));
+}
+
+.kana {
+  font-size: var(--fs-caption);
+  letter-spacing: 0.45em;
+  color: var(--color-accent);
+}
+
+.title {
+  margin-top: var(--space-2);
+  font-size: var(--fs-h2);
+}
+
+.title::after {
+  content: '';
+  display: block;
+  width: var(--space-8);
+  margin-top: var(--space-4);
+  border-top: 1px solid var(--color-accent);
+}
+
+.lede {
+  margin-top: var(--space-4);
+  max-width: 34em;
+  color: var(--color-text-muted);
+}
+
+.night .kana {
+  color: var(--color-accent-night);
+}
+
+.night .title {
+  color: var(--color-text-on-night);
+}
+
+.night .title::after {
+  border-top-color: var(--color-accent-night);
+}
+
+.night .lede {
+  color: var(--color-text-muted-on-night);
+}

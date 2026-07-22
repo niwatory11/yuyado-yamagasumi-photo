@@ -1,0 +1,11 @@
+.section {
+  background: var(--color-bg-paper-alt);
+}
+
+.formWrap {
+  background: var(--color-bg-paper);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius);
+  padding: clamp(var(--space-6), 4vw, var(--space-12));
+  max-width: 46rem;
+}

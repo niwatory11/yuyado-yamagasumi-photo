@@ -1,0 +1,74 @@
+/* ==========================================================================
+   デザイントークン(単一情報源)
+   コンセプト「霞の向こうに、湯の灯り」— 夜山・霞・生成り・灯火
+   ========================================================================== */
+
+:root {
+  /* --- 原色(プリミティブ): 夜の山の宿 --- */
+  --c-yoyama: #182229; /* 夜山: 没入面の地色 */
+  --c-yoyama-fukai: #10171d; /* 深い夜: フッター・グラデ下端 */
+  --c-kasumi: #dde5e8; /* 霞: 夜面の本文 */
+  --c-kasumi-usu: #9fb0b8; /* 薄霞: 夜面の補足 */
+  --c-kinari: #f4efe6; /* 生成り: 読む面の地色 */
+  --c-kinari-fukai: #ece5d8; /* 濃生成り: 読む面の交互帯 */
+  --c-sumicha: #2f2a23; /* 墨茶: 読む面の本文 */
+  --c-sumicha-usu: #6d6558; /* 薄墨茶: 読む面の補足 */
+  --c-tomoshibi: #d29a63; /* 灯火: 夜面のアクセント */
+  --c-tomoshibi-koi: #8a5527; /* 濃灯火: 読む面のアクセント・ボタン */
+  --c-benigara: #a23b2a; /* 弁柄: エラーのみ */
+  --c-benigara-usu: #f7e9e5; /* 弁柄の淡地: エラー背景のみ */
+  --c-keisen-yoru: rgb(221 229 232 / 0.18); /* 夜面の罫線 */
+  --c-keisen-hiru: #d6cdbd; /* 読む面の罫線 */
+
+  /* --- セマンティック --- */
+  --color-bg-night: var(--c-yoyama);
+  --color-bg-paper: var(--c-kinari);
+  --color-bg-paper-alt: var(--c-kinari-fukai);
+  --color-text-on-night: var(--c-kasumi);
+  --color-text-muted-on-night: var(--c-kasumi-usu);
+  --color-text: var(--c-sumicha);
+  --color-text-muted: var(--c-sumicha-usu);
+  --color-accent-night: var(--c-tomoshibi);
+  --color-accent: var(--c-tomoshibi-koi);
+  --color-accent-strong: #6f421c;
+  --color-on-accent: var(--c-kinari);
+  --color-line-night: var(--c-keisen-yoru);
+  --color-line: var(--c-keisen-hiru);
+  --color-error: var(--c-benigara);
+  --color-error-bg: var(--c-benigara-usu);
+  --color-success-bg: #ece8dd;
+  --color-field-bg: #fffdf9;
+  --color-focus: var(--c-tomoshibi-koi);
+  --color-focus-on-night: var(--c-tomoshibi);
+  --color-drawer-overlay: rgb(16 23 29 / 0.6);
+
+  /* --- タイポグラフィ --- */
+  --font-display: 'Zen Old Mincho', 'Hiragino Mincho ProN', serif;
+  --font-body: 'Zen Kaku Gothic New', 'Hiragino Kaku Gothic ProN', sans-serif;
+
+  --fs-display: clamp(2.25rem, 1.5rem + 3.6vw, 4.25rem);
+  --fs-h2: clamp(1.625rem, 1.35rem + 1.3vw, 2.25rem);
+  --fs-h3: clamp(1.125rem, 1.05rem + 0.4vw, 1.375rem);
+  --fs-body-lg: clamp(1.0625rem, 1rem + 0.3vw, 1.1875rem);
+  --fs-body: 1rem;
+  --fs-small: 0.875rem;
+  --fs-caption: 0.8125rem;
+
+  /* --- 余白(4pxスケール) --- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+
+  /* --- その他 --- */
+  --radius: 2px;
+  --tap-min: 44px;
+  --header-h: 4rem;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}

@@ -1,0 +1,19 @@
+.skipLink {
+  position: fixed;
+  top: var(--space-2);
+  left: var(--space-2);
+  z-index: 100;
+  display: inline-block;
+  padding: var(--space-3) var(--space-4);
+  background: var(--c-kinari);
+  color: var(--c-sumicha);
+  border-radius: var(--radius);
+  text-decoration: none;
+  translate: 0 calc(-100% - var(--space-4));
+  transition: translate 0.2s var(--ease-out);
+}
+
+.skipLink:focus-visible {
+  translate: 0 0;
+  outline-color: var(--color-focus);
+}

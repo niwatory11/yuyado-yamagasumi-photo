@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" fill="#182229"/>
+  <!-- 山と霞と月 -->
+  <circle cx="22" cy="9" r="4" fill="#dde5e8"/>
+  <path d="M2 24 L11 12 L17 20 L22 15 L30 24 Z" fill="#3d5261"/>
+  <path d="M0 24h32v3H0z" fill="#dde5e8" opacity="0.55"/>
+  <path d="M0 28h32v2H0z" fill="#dde5e8" opacity="0.3"/>
+</svg>

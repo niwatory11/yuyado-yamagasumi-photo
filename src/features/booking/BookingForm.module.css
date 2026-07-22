@@ -1,0 +1,189 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.summary {
+  border: 1px solid var(--color-error);
+  border-left-width: 4px;
+  background: var(--color-error-bg);
+  padding: var(--space-4) var(--space-6);
+  border-radius: var(--radius);
+}
+
+.summaryTitle {
+  font-weight: 500;
+  color: var(--color-error);
+}
+
+.summaryList {
+  margin: var(--space-2) 0 0;
+  padding-left: 1.2em;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.summaryLink {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap-min);
+  color: var(--color-error);
+  font-size: var(--fs-small);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.label {
+  font-weight: 500;
+  font-size: var(--fs-small);
+  letter-spacing: 0.1em;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.required {
+  font-size: var(--fs-caption);
+  font-weight: 400;
+  color: var(--color-on-accent);
+  background: var(--color-accent);
+  padding: 0 var(--space-2);
+  border-radius: var(--radius);
+  letter-spacing: 0.1em;
+}
+
+.input {
+  width: 100%;
+  min-height: var(--tap-min);
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--c-sumicha-usu);
+  border-radius: var(--radius);
+  background: var(--color-field-bg);
+}
+
+.input[aria-invalid='true'] {
+  border-color: var(--color-error);
+  border-width: 2px;
+}
+
+textarea.input {
+  resize: vertical;
+  min-height: 6rem;
+}
+
+.hint {
+  font-size: var(--fs-caption);
+  color: var(--color-text-muted);
+}
+
+.error {
+  font-size: var(--fs-small);
+  color: var(--color-error);
+}
+
+.radioGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.radioLabel {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-height: var(--tap-min);
+  cursor: pointer;
+}
+
+.radio {
+  width: 1.25rem;
+  height: 1.25rem;
+  accent-color: var(--color-accent);
+}
+
+.submit {
+  align-self: flex-start;
+  min-height: var(--tap-min);
+  padding: var(--space-3) var(--space-12);
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+  border: 1px solid var(--color-accent);
+  border-radius: var(--radius);
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  cursor: pointer;
+  transition: background-color 0.25s var(--ease-out);
+}
+
+.submit:hover {
+  background: var(--color-accent-strong);
+}
+
+.submit:active {
+  scale: 0.98;
+}
+
+.formNote {
+  font-size: var(--fs-caption);
+  color: var(--color-text-muted);
+}
+
+.doneBox {
+  border: 1px solid var(--color-accent);
+  border-left-width: 4px;
+  background: var(--color-success-bg);
+  padding: var(--space-8);
+  border-radius: var(--radius);
+}
+
+.doneTitle {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--fs-h3);
+  letter-spacing: 0.1em;
+}
+
+.doneBody {
+  margin-top: var(--space-3);
+}
+
+.doneNote {
+  margin-top: var(--space-3);
+  font-size: var(--fs-caption);
+  color: var(--color-text-muted);
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-6) var(--space-8);
+  }
+
+  /* ご要望とお部屋タイプは全幅 */
+  .field:has(textarea),
+  .fieldset {
+    grid-column: 1 / -1;
+  }
+}

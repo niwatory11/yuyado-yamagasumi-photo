@@ -1,0 +1,104 @@
+.section {
+  background: linear-gradient(180deg, var(--c-yoyama-fukai) 0%, var(--c-yoyama) 18%, var(--c-yoyama) 100%);
+  color: var(--color-text-on-night);
+}
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.waterFrame,
+.waterFallback {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border: 1px solid var(--color-line-night);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+/* WebGL2非対応環境: 静かな湯の面 */
+.waterFallback {
+  background:
+    radial-gradient(circle at 30% 20%, rgb(210 154 99 / 0.10), transparent 45%),
+    radial-gradient(circle at 65% 55%, rgb(221 229 232 / 0.08), transparent 40%),
+    linear-gradient(180deg, #101b1e 0%, #16262a 100%);
+}
+
+.waterCanvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  /* ポインタで波紋を作るため touch-action は既定のまま(縦スクロールは妨げない) */
+}
+
+.steamCanvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* 下の水面へポインタを通す */
+}
+
+.hint {
+  margin-top: var(--space-3);
+  font-size: var(--fs-caption);
+  color: var(--color-text-muted-on-night);
+  letter-spacing: 0.08em;
+}
+
+.springList {
+  display: flex;
+  flex-direction: column;
+}
+
+.springRow {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding-block: var(--space-3);
+  border-bottom: 1px solid var(--color-line-night);
+}
+
+.springRow:first-child {
+  border-top: 1px solid var(--color-line-night);
+}
+
+.springLabel {
+  font-size: var(--fs-caption);
+  letter-spacing: 0.2em;
+  color: var(--color-accent-night);
+}
+
+.springValue {
+  font-size: var(--fs-small);
+  color: var(--color-text-on-night);
+}
+
+.note {
+  margin-top: var(--space-6);
+  font-size: var(--fs-small);
+  color: var(--color-text-muted-on-night);
+  max-width: 30em;
+}
+
+@media (min-width: 1024px) {
+  .layout {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: var(--space-16);
+  }
+
+  .sceneWrap {
+    flex: 1 1 60%;
+    min-width: 0;
+  }
+
+  .info {
+    flex: 1 1 34%;
+    min-width: 0;
+  }
+}

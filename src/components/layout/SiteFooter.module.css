@@ -1,0 +1,59 @@
+.footer {
+  background: var(--c-yoyama-fukai);
+  color: var(--color-text-on-night);
+  padding-block: var(--space-16) var(--space-12);
+}
+
+.footer :focus-visible {
+  outline-color: var(--color-focus-on-night);
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--fs-body-lg);
+  letter-spacing: 0.22em;
+}
+
+.tagline {
+  margin-top: var(--space-2);
+  font-size: var(--fs-caption);
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted-on-night);
+}
+
+.navList {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-6);
+}
+
+.navLink {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap-min);
+  text-decoration: none;
+  font-size: var(--fs-small);
+  letter-spacing: 0.1em;
+}
+
+.navLink:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.3em;
+}
+
+.concept {
+  font-size: var(--fs-caption);
+  line-height: 1.9;
+  color: var(--color-text-muted-on-night);
+  max-width: 46em;
+  border-top: 1px solid var(--color-line-night);
+  padding-top: var(--space-6);
+}

@@ -1,0 +1,76 @@
+.section {
+  background: var(--color-bg-paper-alt);
+}
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
+.menuTitle {
+  font-size: var(--fs-h3);
+  letter-spacing: 0.14em;
+  margin-bottom: var(--space-6);
+}
+
+.courseList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  max-width: 34rem;
+}
+
+.courseRow {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
+}
+
+.courseName {
+  flex: 1;
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 0.2em;
+}
+
+.dots {
+  flex: 1;
+  border-bottom: 1px dotted var(--color-line);
+  min-width: var(--space-6);
+}
+
+.courseItem {
+  font-size: var(--fs-small);
+  letter-spacing: 0.06em;
+}
+
+.breakfastBody {
+  max-width: 30em;
+  line-height: 2.1;
+}
+
+.note {
+  margin-top: var(--space-6);
+  font-size: var(--fs-caption);
+  color: var(--color-text-muted);
+  max-width: 32em;
+}
+
+@media (min-width: 1024px) {
+  .layout {
+    flex-direction: row;
+    gap: var(--space-20);
+  }
+
+  .menu {
+    flex: 1 1 55%;
+  }
+
+  .breakfast {
+    flex: 1 1 40%;
+  }
+}

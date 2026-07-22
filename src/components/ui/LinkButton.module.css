@@ -1,0 +1,47 @@
+.solid,
+.ghostNight {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--tap-min);
+  padding: var(--space-3) var(--space-8);
+  border-radius: var(--radius);
+  text-decoration: none;
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  transition:
+    background-color 0.25s var(--ease-out),
+    border-color 0.25s var(--ease-out),
+    color 0.25s var(--ease-out);
+}
+
+.solid {
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+  border: 1px solid var(--color-accent);
+}
+
+.solid:hover {
+  background: var(--color-accent-strong);
+  border-color: var(--color-accent-strong);
+}
+
+.solid:active {
+  scale: 0.98;
+}
+
+.ghostNight {
+  background: rgb(16 23 29 / 0.25);
+  color: var(--color-text-on-night);
+  border: 1px solid var(--c-kasumi-usu);
+}
+
+.ghostNight:hover {
+  border-color: var(--color-accent-night);
+  color: var(--color-accent-night);
+}
+
+.ghostNight:active {
+  scale: 0.98;
+}

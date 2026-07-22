@@ -1,0 +1,197 @@
+.header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 50;
+  height: var(--header-h);
+  transition:
+    background-color 0.35s var(--ease-out),
+    color 0.35s var(--ease-out),
+    border-color 0.35s var(--ease-out);
+  border-bottom: 1px solid transparent;
+}
+
+.transparent {
+  background: transparent;
+  color: var(--color-text-on-night);
+}
+
+.transparent :focus-visible {
+  outline-color: var(--color-focus-on-night);
+}
+
+.solid {
+  background: var(--color-bg-paper);
+  color: var(--color-text);
+  border-bottom-color: var(--color-line);
+}
+
+.inner {
+  width: min(100% - 2.5rem, 66rem);
+  margin-inline: auto;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.logo {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.3;
+  text-decoration: none;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--fs-body-lg);
+  letter-spacing: 0.2em;
+  white-space: nowrap;
+  min-height: var(--tap-min);
+  justify-content: center;
+}
+
+.logoReading {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 0.625rem;
+  letter-spacing: 0.4em;
+  opacity: 0.75;
+}
+
+.nav {
+  display: none;
+  margin-left: auto;
+}
+
+.navList {
+  list-style: none;
+  display: flex;
+  gap: var(--space-1);
+}
+
+.navLink {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap-min);
+  padding-inline: var(--space-3);
+  text-decoration: none;
+  font-size: var(--fs-small);
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s var(--ease-out);
+}
+
+.transparent .navLink:hover {
+  border-bottom-color: var(--color-accent-night);
+}
+
+.solid .navLink:hover {
+  border-bottom-color: var(--color-accent);
+}
+
+.actions {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.reserveButton {
+  display: none;
+  align-items: center;
+  min-height: var(--tap-min);
+  padding-inline: var(--space-6);
+  text-decoration: none;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--fs-small);
+  letter-spacing: 0.14em;
+  white-space: nowrap;
+  border-radius: var(--radius);
+  transition: background-color 0.2s var(--ease-out);
+}
+
+.transparent .reserveButton {
+  border: 1px solid var(--c-kasumi-usu);
+  color: var(--color-text-on-night);
+}
+
+.transparent .reserveButton:hover {
+  border-color: var(--color-accent-night);
+  color: var(--color-accent-night);
+}
+
+.solid .reserveButton {
+  background: var(--color-accent);
+  border: 1px solid var(--color-accent);
+  color: var(--color-on-accent);
+}
+
+.solid .reserveButton:hover {
+  background: var(--color-accent-strong);
+}
+
+.reserveButton:active {
+  scale: 0.98;
+}
+
+.menuButton {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: var(--tap-min);
+  padding: var(--space-2) var(--space-3);
+  background: transparent;
+  border: 1px solid currentColor;
+  border-radius: var(--radius);
+  font-size: var(--fs-small);
+  letter-spacing: 0.1em;
+  cursor: pointer;
+}
+
+.menuButton:active {
+  scale: 0.97;
+}
+
+.menuIcon {
+  display: inline-block;
+  width: 1.1em;
+  border-top: 2px solid currentColor;
+  position: relative;
+}
+
+.menuIcon::before,
+.menuIcon::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  border-top: 2px solid currentColor;
+}
+
+.menuIcon::before {
+  top: 4px;
+}
+
+.menuIcon::after {
+  top: 10px;
+}
+
+@media (min-width: 480px) {
+  .reserveButton {
+    display: inline-flex;
+  }
+}
+
+@media (min-width: 1024px) {
+  .nav {
+    display: block;
+  }
+
+  .actions {
+    margin-left: 0;
+  }
+
+  .menuButton {
+    display: none;
+  }
+}

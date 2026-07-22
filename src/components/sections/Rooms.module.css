@@ -1,0 +1,106 @@
+.section {
+  background: var(--color-bg-paper);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
+}
+
+.card {
+  display: flex;
+  gap: var(--space-6);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius);
+  background: var(--color-bg-paper);
+  padding: var(--space-6);
+}
+
+/* 客室札: 縦書きの一文字 */
+.sign {
+  flex: none;
+  writing-mode: vertical-rl;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(2.25rem, 1.8rem + 2vw, 3.25rem);
+  line-height: 1;
+  letter-spacing: 0;
+  color: var(--color-accent);
+  border-right: 1px solid var(--color-line);
+  padding-right: var(--space-4);
+}
+
+.body {
+  min-width: 0;
+}
+
+.name {
+  font-size: var(--fs-h3);
+  letter-spacing: 0.1em;
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
+}
+
+.reading {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: var(--fs-caption);
+  letter-spacing: 0.3em;
+  color: var(--color-text-muted);
+}
+
+.specs {
+  margin-top: var(--space-4);
+  border-top: 1px dotted var(--color-line);
+}
+
+.specRow {
+  display: flex;
+  gap: var(--space-4);
+  padding-block: var(--space-2);
+  border-bottom: 1px dotted var(--color-line);
+}
+
+.specLabel {
+  flex: 0 0 4.5em;
+  font-size: var(--fs-caption);
+  letter-spacing: 0.2em;
+  color: var(--color-text-muted);
+}
+
+.specValue {
+  font-size: var(--fs-small);
+}
+
+.desc {
+  margin-top: var(--space-4);
+  font-size: var(--fs-small);
+  line-height: 2;
+  max-width: 34em;
+}
+
+.note {
+  margin-top: clamp(var(--space-8), 5vw, var(--space-12));
+  font-size: var(--fs-caption);
+  color: var(--color-text-muted);
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* 露天付き「灯」は全幅で主役に */
+  .cardFeatured {
+    grid-column: 1 / -1;
+    padding: var(--space-8);
+    background: var(--color-bg-paper-alt);
+  }
+
+  .cardFeatured .sign {
+    font-size: clamp(3rem, 2.4rem + 3vw, 4.5rem);
+    padding-right: var(--space-6);
+  }
+}
