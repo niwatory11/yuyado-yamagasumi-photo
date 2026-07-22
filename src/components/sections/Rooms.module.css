@@ -10,11 +10,24 @@
 
 .card {
   display: flex;
-  gap: var(--space-6);
+  flex-direction: column;
   border: 1px solid var(--color-line);
   border-radius: var(--radius);
   background: var(--color-bg-paper);
+  overflow: hidden;
+}
+
+.photo {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+
+.inner {
+  display: flex;
+  gap: var(--space-6);
   padding: var(--space-6);
+  flex: 1;
 }
 
 /* 客室札: 縦書きの一文字 */
@@ -92,11 +105,22 @@
     grid-template-columns: repeat(2, 1fr);
   }
 
-  /* 露天付き「灯」は全幅で主役に */
+  /* 露天付き「灯」は全幅・写真を左半分に敷いて主役に */
   .cardFeatured {
     grid-column: 1 / -1;
-    padding: var(--space-8);
+    flex-direction: row;
     background: var(--color-bg-paper-alt);
+  }
+
+  .cardFeatured .photo {
+    flex: 0 0 46%;
+    width: 46%;
+    aspect-ratio: auto;
+    min-height: 100%;
+  }
+
+  .cardFeatured .inner {
+    padding: var(--space-8);
   }
 
   .cardFeatured .sign {

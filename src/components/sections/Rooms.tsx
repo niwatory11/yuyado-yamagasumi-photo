@@ -1,40 +1,50 @@
 import type { Room } from '../../data/inn'
 import { rooms, roomsNote } from '../../data/inn'
+import { roomPhotos } from '../../data/photos'
 import { Reveal } from '../ui/Reveal'
 import { SectionHeading } from '../ui/SectionHeading'
 import styles from './Rooms.module.css'
 
 function RoomCard({ room, delay = 0 }: { room: Room; delay?: number }) {
+  const photo = roomPhotos[room.id]
   return (
     <Reveal
       as="article"
       delay={delay}
       className={room.featured ? `${styles.card} ${styles.cardFeatured}` : styles.card}
     >
-      {/* 客室札: 部屋名は木札のように縦書きで */}
-      <p className={styles.sign} aria-hidden="true">
-        {room.name}
-      </p>
-      <div className={styles.body}>
-        <h3 className={styles.name}>
-          「{room.name}」
-          <span className={styles.reading}>{room.reading}</span>
-        </h3>
-        <dl className={styles.specs}>
-          <div className={styles.specRow}>
-            <dt className={styles.specLabel}>間取り</dt>
-            <dd className={styles.specValue}>{room.size}</dd>
-          </div>
-          <div className={styles.specRow}>
-            <dt className={styles.specLabel}>定員</dt>
-            <dd className={styles.specValue}>{room.capacity}</dd>
-          </div>
-          <div className={styles.specRow}>
-            <dt className={styles.specLabel}>料金</dt>
-            <dd className={styles.specValue}>{room.price}</dd>
-          </div>
-        </dl>
-        <p className={styles.desc}>{room.body}</p>
+      <img
+        src={photo.src}
+        alt={photo.alt}
+        loading="lazy"
+        className={styles.photo}
+      />
+      <div className={styles.inner}>
+        {/* 客室札: 部屋名は木札のように縦書きで */}
+        <p className={styles.sign} aria-hidden="true">
+          {room.name}
+        </p>
+        <div className={styles.body}>
+          <h3 className={styles.name}>
+            「{room.name}」
+            <span className={styles.reading}>{room.reading}</span>
+          </h3>
+          <dl className={styles.specs}>
+            <div className={styles.specRow}>
+              <dt className={styles.specLabel}>間取り</dt>
+              <dd className={styles.specValue}>{room.size}</dd>
+            </div>
+            <div className={styles.specRow}>
+              <dt className={styles.specLabel}>定員</dt>
+              <dd className={styles.specValue}>{room.capacity}</dd>
+            </div>
+            <div className={styles.specRow}>
+              <dt className={styles.specLabel}>料金</dt>
+              <dd className={styles.specValue}>{room.price}</dd>
+            </div>
+          </dl>
+          <p className={styles.desc}>{room.body}</p>
+        </div>
       </div>
     </Reveal>
   )

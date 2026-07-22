@@ -43,7 +43,7 @@ export const bathInfo = {
 }
 
 export type Room = {
-  id: string
+  id: 'akari' | 'kasumi' | 'kodama'
   name: string
   reading: string
   size: string
@@ -85,7 +85,7 @@ export const rooms: Room[] = [
 ]
 
 export const roomsNote =
-  '料金はすべて架空の設定です。全室禁煙、Wi-Fiは母屋のみ。テレビは置いていません。'
+  '料金はすべて架空の設定です。写真はイメージです。全室禁煙、Wi-Fiは母屋のみ。テレビは置いていません。'
 
 export const cuisine = {
   lede: '夕餉は六時と七時半の二部制。囲炉裏の間で、一品ずつお出しします。',

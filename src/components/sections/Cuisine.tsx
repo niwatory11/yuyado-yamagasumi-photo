@@ -1,4 +1,5 @@
 import { cuisine } from '../../data/inn'
+import { kaisekiPhoto } from '../../data/photos'
 import { Reveal } from '../ui/Reveal'
 import { SectionHeading } from '../ui/SectionHeading'
 import styles from './Cuisine.module.css'
@@ -36,6 +37,17 @@ export function Cuisine() {
           </Reveal>
 
           <Reveal delay={0.12} className={styles.breakfast}>
+            <figure className={styles.photoFigure}>
+              <img
+                src={kaisekiPhoto.src}
+                alt={kaisekiPhoto.alt}
+                loading="lazy"
+                className={styles.photo}
+              />
+              <figcaption className={styles.photoCaption}>
+                夕餉の先付(写真はイメージです)
+              </figcaption>
+            </figure>
             <h3 className={styles.menuTitle}>朝餉</h3>
             <p className={styles.breakfastBody}>{cuisine.breakfast}</p>
             <p className={styles.note}>{cuisine.note}</p>

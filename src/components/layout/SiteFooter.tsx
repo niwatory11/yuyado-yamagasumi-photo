@@ -1,5 +1,6 @@
 import { innInfo } from '../../data/inn'
 import { navItems, reserveNavItem } from '../../data/nav'
+import { photoCreditsLine } from '../../data/photos'
 import styles from './SiteFooter.module.css'
 
 export function SiteFooter() {
@@ -34,6 +35,7 @@ export function SiteFooter() {
           本サイトは、フロントエンド制作実績のために作成した架空の宿のコンセプトサイトです(Concept
           Project)。「湯宿 山霞」は実在せず、掲載している住所・料金・泉質・献立はすべて架空の設定です。フォームに入力された内容は保存・送信されません。WebGLの水面・霞・湯けむりはすべて自作GLSLシェーダーで描画しています。
         </p>
+        <p className={styles.credits}>{photoCreditsLine}</p>
       </div>
     </footer>
   )

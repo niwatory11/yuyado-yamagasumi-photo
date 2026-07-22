@@ -22,7 +22,7 @@ const fontsourceWoff2Only = {
 // https://vite.dev/config/
 export default defineConfig({
   // GitHub Pages(プロジェクトページ)配信用のサブパス
-  base: '/yuyado-yamagasumi/',
+  base: '/yuyado-yamagasumi-photo/',
   plugins: [fontsourceWoff2Only, react()],
   test: {
     environment: 'jsdom',

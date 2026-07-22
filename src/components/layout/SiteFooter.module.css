@@ -57,3 +57,10 @@
   border-top: 1px solid var(--color-line-night);
   padding-top: var(--space-6);
 }
+
+.credits {
+  font-size: var(--fs-caption);
+  line-height: 1.9;
+  color: var(--color-text-muted-on-night);
+  max-width: 46em;
+}

@@ -48,6 +48,23 @@
   letter-spacing: 0.06em;
 }
 
+.photoFigure {
+  margin: 0 0 var(--space-8);
+}
+
+.photo {
+  width: 100%;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius);
+}
+
+.photoCaption {
+  margin-top: var(--space-2);
+  font-size: var(--fs-caption);
+  color: var(--color-text-muted);
+  letter-spacing: 0.08em;
+}
+
 .breakfastBody {
   max-width: 30em;
   line-height: 2.1;
