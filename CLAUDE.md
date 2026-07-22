@@ -49,6 +49,12 @@
 - DOM側のスクロール演出は `useReveal` + `.reveal` の「フェード+16px上昇」のみ
 - コピー(文言・料金)は `src/data/` に置き、コンポーネントに直書きしない
 
+## 依存関係の注意
+
+- `@emnapi/core` / `@emnapi/runtime` は**直接は未使用だが削除禁止**。oxlintのwasm系optional依存の
+  lockfile記録を安定させるためのピン留めで、削除するとローカルの`npm ci`は通るのに
+  GitHub Actionsの`npm ci`が「Missing from lock file」で失敗する(実際に2回再発している)
+
 ## コマンド
 
 ```bash
