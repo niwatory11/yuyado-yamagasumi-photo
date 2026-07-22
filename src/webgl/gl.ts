@@ -25,9 +25,17 @@ export function createProgram(
 ): WebGLProgram | null {
   const vert = compileShader(gl, gl.VERTEX_SHADER, vertSource)
   const frag = compileShader(gl, gl.FRAGMENT_SHADER, fragSource)
-  if (!vert || !frag) return null
+  if (!vert || !frag) {
+    if (vert) gl.deleteShader(vert)
+    if (frag) gl.deleteShader(frag)
+    return null
+  }
   const program = gl.createProgram()
-  if (!program) return null
+  if (!program) {
+    gl.deleteShader(vert)
+    gl.deleteShader(frag)
+    return null
+  }
   gl.attachShader(program, vert)
   gl.attachShader(program, frag)
   gl.linkProgram(program)

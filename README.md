@@ -29,6 +29,7 @@
 - **`prefers-reduced-motion: reduce`** → 1フレームだけ描画して停止
 - **画面外・タブ非表示** → IntersectionObserver / visibilitychange で描画ループを停止
 - **devicePixelRatio上限**(ヒーロー2 / 水面1.5)と固定解像度シミュレーション(256²)で負荷を一定化
+- 水面シミュレーションは固定120ステップ/秒とし、高リフレッシュレートでも速度と負荷を一定化
 - float色バッファ非対応環境では水面シミュレーションのみ無効化(さざなみは動き続ける)
 
 ## 主な機能
@@ -49,7 +50,7 @@
 | ビルド | Vite 8(GLSLは `?raw` import) |
 | 描画 | 素のWebGL2 + 手書きGLSL ×4本(3Dライブラリ不使用) |
 | スタイル | CSS Modules + CSS Custom Properties(デザイントークン) |
-| フォント | @fontsource(セルフホスト・unicode-rangeスライス配信) |
+| フォント | @fontsource(セルフホスト・unicode-rangeスライス配信、初期CSSから分離) |
 | テスト | Vitest + Testing Library(25件) |
 | lint | oxlint |
 
@@ -91,4 +92,4 @@ npm run preview    # production buildの確認
 
 ## ライセンス・注意
 
-個人ポートフォリオ用のコンセプト作品です。文章・GLSLシェーダー・SVGを含む全アセットは本リポジトリのために制作したものです。
+個人ポートフォリオ用のコンセプト作品です。文章・GLSLシェーダー・SVGは本リポジトリのために制作したものです。Webフォントの Zen Old Mincho / Zen Kaku Gothic New は第三者制作物で、SIL Open Font License 1.1 に基づき `@fontsource` パッケージから利用しています。

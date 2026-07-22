@@ -295,6 +295,8 @@ export function BookingForm() {
                   checked={values.room === room.id}
                   onChange={(e) => handleChange('room', e.target.value)}
                   onBlur={() => handleBlur('room')}
+                  aria-invalid={Boolean(errors.room)}
+                  aria-describedby={errors.room ? errorId('room') : undefined}
                 />
                 <span>
                   「{room.name}」{room.size}

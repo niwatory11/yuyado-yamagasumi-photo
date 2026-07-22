@@ -50,6 +50,10 @@ describe('BookingForm', () => {
     expect(summary).toHaveTextContent('7件の不備')
     expect(screen.getByLabelText(/お名前/)).toHaveFocus()
     expect(screen.getByLabelText(/お名前/)).toHaveAttribute('aria-invalid', 'true')
+    expect(screen.getByRole('radio', { name: /「灯」/ })).toHaveAttribute(
+      'aria-describedby',
+      'bk-room-error',
+    )
   })
 
   it('サマリーのリンクで該当フィールドへフォーカスが移る', async () => {

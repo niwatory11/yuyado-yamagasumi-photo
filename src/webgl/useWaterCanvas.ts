@@ -7,6 +7,10 @@ import renderSource from '../shaders/water-render.frag.glsl?raw'
 
 /** シミュレーション解像度(正方形)。表示解像度から独立させて負荷を一定に保つ */
 const SIM_SIZE = 256
+/** 60Hzで従来と同じ2ステップ。高リフレッシュレートでも進行速度を一定にする */
+const SIM_STEP_SECONDS = 1 / 120
+/** 復帰直後などにシミュレーションの追いつきでGPUを占有しないための上限 */
+const MAX_SIM_STEPS_PER_FRAME = 4
 
 type Drop = { x: number; y: number; strength: number }
 
@@ -42,6 +46,9 @@ export function useWaterCanvas() {
     const simProgram = createProgram(gl, vertSource, simSource)
     const vao = createFullscreenVao(gl)
     if (!renderProgram || !simProgram || !vao) {
+      if (renderProgram) gl.deleteProgram(renderProgram)
+      if (simProgram) gl.deleteProgram(simProgram)
+      if (vao) gl.deleteVertexArray(vao)
       setSupported(false)
       return
     }
@@ -96,6 +103,10 @@ export function useWaterCanvas() {
       gl.TEXTURE_2D, 0, gl.RGBA, 1, 1, 0, gl.RGBA, gl.UNSIGNED_BYTE,
       new Uint8Array([0, 0, 0, 255]),
     )
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST)
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST)
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE)
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE)
 
     // uniform locations
     const simU = {
@@ -118,6 +129,7 @@ export function useWaterCanvas() {
     let elapsed = 0
     let lastTs: number | null = null
     let sinceDrip = 0
+    let simAccumulator = 0
     const dropQueue: Drop[] = []
     let lastPointer: { x: number; y: number } | null = null
 
@@ -155,9 +167,14 @@ export function useWaterCanvas() {
       resize()
 
       if (simEnabled) {
-        // 1フレームに2ステップ回すと波の伝播が自然な速さになる
-        simStep(dropQueue.shift())
-        simStep(dropQueue.shift())
+        simAccumulator = Math.min(
+          simAccumulator + dt,
+          SIM_STEP_SECONDS * MAX_SIM_STEPS_PER_FRAME,
+        )
+        while (simAccumulator >= SIM_STEP_SECONDS) {
+          simStep(dropQueue.shift())
+          simAccumulator -= SIM_STEP_SECONDS
+        }
       }
 
       gl.bindFramebuffer(gl.FRAMEBUFFER, null)
@@ -253,9 +270,18 @@ export function useWaterCanvas() {
       start()
     }
 
+    const resizeObserver =
+      typeof ResizeObserver !== 'undefined'
+        ? new ResizeObserver(() => {
+            if (prefersReducedMotion) renderFrame(0)
+          })
+        : null
+    resizeObserver?.observe(canvas)
+
     return () => {
       stop()
       observer?.disconnect()
+      resizeObserver?.disconnect()
       canvas.removeEventListener('pointermove', onPointerMove)
       canvas.removeEventListener('pointerleave', onPointerLeave)
       document.removeEventListener('visibilitychange', onVisibility)

@@ -12,6 +12,11 @@ dist
 dist-ssr
 *.local
 
+# ローカル環境変数・秘密情報(共有用テンプレートだけは追跡可能)
+.env
+.env.*
+!.env.example
+
 # Instagram Reels調査の生データは公開リポジトリに含めない
 research/
 

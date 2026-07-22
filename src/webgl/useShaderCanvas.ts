@@ -49,6 +49,8 @@ export function useShaderCanvas({
     const program = createProgram(gl, vertSource, frag)
     const vao = createFullscreenVao(gl)
     if (!program || !vao) {
+      if (program) gl.deleteProgram(program)
+      if (vao) gl.deleteVertexArray(vao)
       setSupported(false)
       return
     }
@@ -117,6 +119,7 @@ export function useShaderCanvas({
     }
 
     const onPointerMove = (event: PointerEvent) => {
+      if (!inView) return
       const rect = canvas.getBoundingClientRect()
       if (rect.width === 0 || rect.height === 0) return
       pointer.tx = Math.min(1, Math.max(0, (event.clientX - rect.left) / rect.width))

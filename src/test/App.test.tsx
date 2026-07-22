@@ -28,7 +28,7 @@ describe('App(スモークテスト)', () => {
       'href',
       '#main',
     )
-    expect(screen.getByRole('main')).toBeInTheDocument()
+    expect(screen.getByRole('main')).toHaveAttribute('tabindex', '-1')
   })
 
   it('架空の宿である旨の注記がヒーローとフッターの両方にある', () => {

@@ -14,7 +14,7 @@ function App() {
     <>
       <SkipLink />
       <SiteHeader />
-      <main id="main">
+      <main id="main" tabIndex={-1}>
         <Hero />
         <About />
         <Bath />
