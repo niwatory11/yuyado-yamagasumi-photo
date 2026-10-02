@@ -1,11 +1,13 @@
 import roomAkariSrc from '../assets/photos/room-akari.webp'
 import roomKasumiSrc from '../assets/photos/room-kasumi.webp'
-import roomKodamaSrc from '../assets/photos/room-kodama.webp'
-import kaisekiSrc from '../assets/photos/kaiseki.webp'
-import lampSrc from '../assets/photos/lamp.webp'
+import roomKodamaSrc from '../assets/photos/room-kodama-v2.webp'
+import kaisekiSrc from '../assets/photos/kaiseki-v2.webp'
+import approachSrc from '../assets/photos/approach.webp'
 
 /**
- * 実写素材(すべてCCライセンスのフリー素材を「夜山×灯火」トーンに色調加工したもの)。
+ * 部屋「灯」「霞」の2点はCCライセンスのフリー素材を「夜山×灯火」トーンに色調加工したもの。
+ * 部屋「谺」と料理・宿の3点は画像生成AI(ChatGPT / GPT Image)による生成イメージ
+ * (プロンプトは docs/image-generation-prompts.md)。
  * 出典・作者・ライセンスの一覧は docs/credits.md とフッターに記載する。
  * 架空の宿のため、すべて「写真はイメージ」である旨をサイト内に明記する。
  */
@@ -28,23 +30,23 @@ export const roomPhotos: Record<'akari' | 'kasumi' | 'kodama', Photo> = {
   },
   kodama: {
     src: roomKodamaSrc,
-    alt: '文机と座椅子だけの小さな和室(写真はイメージ)',
-    credit: 'decade_null / CC BY 2.0(色調加工)',
+    alt: '行灯のともる広縁の窓辺に椅子を置き、霧の谷を望む(写真はイメージ)',
+    credit: '画像生成AIによる生成イメージ(ChatGPT / GPT Image)',
   },
 }
 
 export const kaisekiPhoto: Photo = {
   src: kaisekiSrc,
-  alt: '漆の盆に杯と先付の小鉢が並ぶ会席の膳(写真はイメージ)',
-  credit: 'Chris 73, Wikimedia Commons / CC BY-SA 3.0(色調加工)',
+  alt: '囲炉裏の炭火のまわりに、串に刺した岩魚の塩焼きが並ぶ(写真はイメージ)',
+  credit: '画像生成AIによる生成イメージ(ChatGPT / GPT Image)',
 }
 
-export const lampPhoto: Photo = {
-  src: lampSrc,
-  alt: '暗い天井にともる竹枠の行灯(写真はイメージ)',
-  credit: 'halfrain / CC BY-SA 2.0(色調加工)',
+export const aboutPhoto: Photo = {
+  src: approachSrc,
+  alt: '灯籠に照らされた石段の先に、のれんの掛かる宿の玄関が灯る(写真はイメージ)',
+  credit: '画像生成AIによる生成イメージ(ChatGPT / GPT Image)',
 }
 
 /** フッターに載せる短いクレジット(完全な出典は docs/credits.md) */
 export const photoCreditsLine =
-  '写真: halfrain(CC BY-SA 2.0)/ Rawpixel(CC0)/ decade_null(CC BY 2.0)/ Chris 73, Wikimedia Commons(CC BY-SA 3.0)— いずれも色調加工のうえ使用。写真はイメージです。'
+  '写真: halfrain(CC BY-SA 2.0)/ Rawpixel(CC0)— 色調加工のうえ使用。部屋「谺」と料理・宿の写真は画像生成AI(ChatGPT)による生成イメージ。写真はイメージです。'
