@@ -45,7 +45,7 @@ export function Cuisine() {
                 className={styles.photo}
               />
               <figcaption className={styles.photoCaption}>
-                夕餉の先付(写真はイメージです)
+                夕餉より 岩魚の塩焼き(写真はイメージです)
               </figcaption>
             </figure>
             <h3 className={styles.menuTitle}>朝餉</h3>

@@ -1,12 +1,13 @@
 import { useShaderCanvas } from '../../webgl/useShaderCanvas'
 import mistFrag from '../../shaders/mist.frag.glsl?raw'
+import { heroPhoto } from '../../data/photos'
 import { LinkButton } from '../ui/LinkButton'
 import styles from './Hero.module.css'
 
 /**
- * ファーストビュー: GLSLで描く夜の霞谷。
- * スクロールで霞が薄れ、宿の灯りが強くなる(シェーダー側のu_scroll)。
- * WebGL2が使えない環境ではCSSグラデーションの静的な夜空に落とす。
+ * ファーストビュー: 夜の谷と宿の写真(ゆっくりズーム)の上を、GLSLで描く霞が流れる。
+ * スクロールで霞が晴れ、写真の宿の灯りが見えてくる(シェーダー側のu_scroll)。
+ * WebGL2が使えない環境では、写真の上にCSSグラデーションの静的な霞をかける。
  */
 export function Hero() {
   const { ref, supported } = useShaderCanvas({
@@ -17,11 +18,22 @@ export function Hero() {
 
   return (
     <section id="top" aria-label="湯宿 山霞 — 霞の谷の温泉宿" className={styles.hero}>
+      {/* 情報はすべてテキスト側にあるため、背景写真は装飾扱い(alt="") */}
+      <img
+        src={heroPhoto.src}
+        srcSet={heroPhoto.srcSet}
+        sizes="100vw"
+        alt=""
+        fetchPriority="high"
+        decoding="async"
+        className={styles.photo}
+      />
       {supported ? (
         <canvas ref={ref} className={styles.canvas} aria-hidden="true" />
       ) : (
         <div className={styles.fallback} aria-hidden="true" />
       )}
+      <div className={styles.scrim} aria-hidden="true" />
 
       <div className={`container ${styles.inner}`}>
         <p className={styles.eyebrow}>信州・霞谷温泉 — 全六室の湯宿</p>

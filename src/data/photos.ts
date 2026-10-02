@@ -2,11 +2,14 @@ import roomAkariSrc from '../assets/photos/room-akari.webp'
 import roomKasumiSrc from '../assets/photos/room-kasumi.webp'
 import roomKodamaSrc from '../assets/photos/room-kodama.webp'
 import kaisekiSrc from '../assets/photos/kaiseki.webp'
-import lampSrc from '../assets/photos/lamp.webp'
+import approachSrc from '../assets/photos/approach.webp'
+import heroSrc from '../assets/photos/hero.webp'
+import hero960Src from '../assets/photos/hero-960.webp'
 
 /**
- * 実写素材(すべてCCライセンスのフリー素材を「夜山×灯火」トーンに色調加工したもの)。
- * 出典・作者・ライセンスの一覧は docs/credits.md とフッターに記載する。
+ * 全6点とも画像生成AI(ChatGPT / GPT Image)による生成イメージを「夜山×灯火」トーンに
+ * 色調加工したもの(プロンプトは docs/image-generation-prompts.md)。
+ * 出典・ライセンスの一覧は docs/credits.md とフッターに記載する。
  * 架空の宿のため、すべて「写真はイメージ」である旨をサイト内に明記する。
  */
 export type Photo = {
@@ -15,36 +18,48 @@ export type Photo = {
   credit: string
 }
 
+const generatedCredit = '画像生成AIによる生成イメージ(ChatGPT / GPT Image)'
+
 export const roomPhotos: Record<'akari' | 'kasumi' | 'kodama', Photo> = {
   akari: {
     src: roomAkariSrc,
-    alt: '床の間と掛け軸のある座敷。天井の灯りがともっている(写真はイメージ)',
-    credit: 'halfrain / CC BY-SA 2.0(色調加工)',
+    alt: '灯りを落とした座敷の先、谷に張り出した石組みの露天風呂に月が映る(写真はイメージ)',
+    credit: generatedCredit,
   },
   kasumi: {
     src: roomKasumiSrc,
-    alt: '障子と広縁のある和室。窓の外に山の気配が見える(写真はイメージ)',
-    credit: 'Rawpixel / CC0(色調加工)',
+    alt: '夜明けの和室。障子を開けた広縁の窓の外を、谷いちめんの霞が満たす(写真はイメージ)',
+    credit: generatedCredit,
   },
   kodama: {
     src: roomKodamaSrc,
-    alt: '文机と座椅子だけの小さな和室(写真はイメージ)',
-    credit: 'decade_null / CC BY 2.0(色調加工)',
+    alt: '文机と座布団、行灯ひとつだけが置かれた夜の小さな和室(写真はイメージ)',
+    credit: generatedCredit,
   },
 }
 
 export const kaisekiPhoto: Photo = {
   src: kaisekiSrc,
-  alt: '漆の盆に杯と先付の小鉢が並ぶ会席の膳(写真はイメージ)',
-  credit: 'Chris 73, Wikimedia Commons / CC BY-SA 3.0(色調加工)',
+  alt: '囲炉裏の炭火のまわりに、串に刺した岩魚の塩焼きが並ぶ(写真はイメージ)',
+  credit: generatedCredit,
 }
 
-export const lampPhoto: Photo = {
-  src: lampSrc,
-  alt: '暗い天井にともる竹枠の行灯(写真はイメージ)',
-  credit: 'halfrain / CC BY-SA 2.0(色調加工)',
+export const aboutPhoto: Photo = {
+  src: approachSrc,
+  alt: '灯籠に照らされた石段の先に、のれんの掛かる宿の玄関が灯る(写真はイメージ)',
+  credit: generatedCredit,
+}
+
+/**
+ * ヒーロー背景(夜の谷と山腹の宿)。上に霞シェーダーが重なる装飾レイヤーのため alt は持たない
+ * (情報はヒーローのテキスト側にある)。
+ */
+export const heroPhoto = {
+  src: heroSrc,
+  srcSet: `${hero960Src} 960w, ${heroSrc} 1536w`,
+  credit: generatedCredit,
 }
 
 /** フッターに載せる短いクレジット(完全な出典は docs/credits.md) */
 export const photoCreditsLine =
-  '写真: halfrain(CC BY-SA 2.0)/ Rawpixel(CC0)/ decade_null(CC BY 2.0)/ Chris 73, Wikimedia Commons(CC BY-SA 3.0)— いずれも色調加工のうえ使用。写真はイメージです。'
+  '写真: 画像生成AI(ChatGPT / GPT Image)による生成イメージを色調加工のうえ使用。写真はイメージです。'

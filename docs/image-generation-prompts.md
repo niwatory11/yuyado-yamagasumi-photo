@@ -1,6 +1,15 @@
-# 画像生成AI用プロンプト集(料理・宿の差し替え候補)
+# 画像生成AI用プロンプト集(写真併用版の全写真)
 
-対象: 写真併用版「湯宿 山霞」の差し替え希望2箇所。
+> **第1弾(2026-07-23)**: ChatGPTで全6案を生成し、宿について=案A(`approach.webp`、4:5クロップ)を採用(現行)。
+> 料理=案B と、宿・案Bを転用した部屋「谺」も一度組み込んだが、第2弾で差し替えた。
+>
+> **第2弾(2026-10-02)**: 部屋3室と料理を、本文(`src/data/inn.ts`)に合わせたプロンプトで再生成し差し替え。
+> プロンプトは「第2弾」節を参照。
+>
+> **第3弾(2026-10-02)**: ヒーロー背景を3案生成し、案A(山腹の一軒宿と月)を `hero.webp` として採用。
+> 霞は写真に描き込まず、GLSLシェーダー(`mist.frag.glsl`)が上に重ねる。出典・ライセンスは `docs/credits.md` を参照。
+
+対象(第1弾): 写真併用版「湯宿 山霞」の差し替え希望2箇所。
 
 1. **料理(夕餉)** — 現行 `src/assets/photos/kaiseki.webp`(1400x812)を別の料理写真にする
 2. **宿について** — 現行 `src/assets/photos/lamp.webp`(行灯のクローズアップ)を、もっと広い画角で宿が分かる写真にする
@@ -122,3 +131,56 @@ below, deep blue night sky, no other buildings
 6. `npm run lint && npm run typecheck && npm run build` + 5画面幅の表示確認
 
 > 生成画像をこのフォルダに置いてもらえれば、2〜6の組み込み作業はこちらで行います。
+
+---
+
+## 第2弾(2026-10-02): 部屋3室と料理の再生成
+
+本文と写真の食い違い(「谺」は六畳・文机と行灯だけ、「灯」は専用露天、「霞」は広縁まで霞)を解消し、
+CC実写の残っていた「灯」「霞」も含めてトーンを統一するために再生成した。
+Codex CLI(`codex exec`)の画像生成機能(GPT Image)で生成。各プロンプトの末尾には共通ルールのスタイルブロックとネガティブ要素を付けている。
+
+後加工(ffmpeg): 部屋は 1200x800 にリサイズして彩度を 0.82〜0.88 倍に、料理は 1400x1050 で彩度0.68倍・
+わずかに減光・シャドウを青灰寄りにして、WebP(品質80)で書き出した。
+
+### 部屋「灯」 → `room-akari.webp`
+
+```text
+Landscape 3:2 photo. Interior of a small 8-tatami Japanese ryokan guest room at night, lights dimmed; through fully opened shoji and a narrow wooden deck, a private open-air stone bath (rotenburo) cantilevered over a dark forested valley, faint steam, a pale moon reflected on the still water. Low table and one paper lamp inside the room. Keep the main subject (room-to-bath view) centered so it survives a tall vertical crop.
+```
+
+### 部屋「霞」 → `room-kasumi.webp`
+
+```text
+Landscape 3:2 photo. A 10-tatami Japanese ryokan room at early dawn, shoji screens slid open onto a hiroen (wide window-side corridor with two low chairs and a small table); beyond the glass, a sea of white morning mist fills the mountain valley right up to the window sill. Soft blue-grey pre-dawn light, one small paper lamp still glowing warm inside. Tidy, no luggage.
+```
+
+### 部屋「谺」 → `room-kodama.webp`
+
+```text
+Landscape 3:2 photo. A small, simple 6-tatami Japanese room at night containing only a low wooden writing desk (fumizukue) with a flat cushion, and a single glowing paper andon lantern on the tatami beside it; plain earthen wall, closed shoji with faint blue night outside. Intimate, solitary, minimal, nothing else in the room. Eye level from a seated height.
+```
+
+### 料理(夕餉) → `kaiseki.webp`
+
+```text
+Landscape 4:3 photo. Salt-grilled iwana char fish, each on a single bamboo skewer pierced through the mouth, bodies gently curved in the traditional wavy odori-gushi style, standing upright in the ash around a glowing charcoal irori hearth in a dark Japanese mountain inn. Anatomically correct fish: one head, one tail, natural fins, coarse salt crusting the fins and tail, crisp golden skin. Four to five fish only, evenly spaced, ember glow lighting them from below, shallow depth of field.
+```
+
+---
+
+## 第3弾(2026-10-02): ヒーロー背景
+
+霞はシェーダーが重ねるため、写真は「空気が澄んだ状態」で生成する(プロンプトで heavy fog を除外)。
+見出しが左下に乗るので左下3分の1は暗く静かに、宿は右半分の中ほどに置き、スマホの縦長クロップに耐える構図にした。
+3案(A: 山腹の一軒宿と月 / B: 残照の谷と宿の灯り / C: 渓谷越しの宿の軒)から、霞の帯が谷に重なり
+「霞の向こうに、湯の灯り」の構図になるAを採用。Bは残照のオレンジがトーンから外れ、Cは宿が近すぎて距離感が出なかった。
+
+後加工(ffmpeg): 彩度0.9倍。1536px幅(品質82)と960px幅(品質80)の2サイズをWebPで書き出し、`srcset` で出し分ける。
+
+### ヒーロー背景 → `hero.webp`(案A)
+
+```text
+Wide landscape 3:2 for a full-screen website hero. Composition: keep the lower-left third dark and calm with little detail (headline text will sit there); main point of interest in the right half around the middle height so it survives a tall vertical center crop on phones. Distant wide shot at nightfall of a small traditional wooden Japanese onsen inn nestled on a forested mountain slope, only a few warm paper windows glowing, a thin wisp of steam rising from behind the roof. Layered mountain ridges receding into blue-grey distance, deep blue night sky with a pale moon high on the right, faint stars. No other buildings.
+```
+

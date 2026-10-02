@@ -1,5 +1,5 @@
 import { aboutIntro, values } from '../../data/inn'
-import { lampPhoto } from '../../data/photos'
+import { aboutPhoto } from '../../data/photos'
 import { Reveal } from '../ui/Reveal'
 import { SectionHeading } from '../ui/SectionHeading'
 import styles from './About.module.css'
@@ -26,8 +26,8 @@ export function About() {
 
           <Reveal delay={0.15} className={styles.lampWrap}>
             <img
-              src={lampPhoto.src}
-              alt={lampPhoto.alt}
+              src={aboutPhoto.src}
+              alt={aboutPhoto.alt}
               loading="lazy"
               className={styles.lamp}
             />
