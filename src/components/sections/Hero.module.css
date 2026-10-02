@@ -8,19 +8,67 @@
   overflow: hidden;
 }
 
+.photo,
 .canvas,
-.fallback {
+.fallback,
+.scrim {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
 }
 
-/* WebGL2非対応環境: 静的な夜のグラデーション */
+/* 背景写真: 宿が画面右寄り(横位置の約80%)にあるため、縦長画面では右寄りを残す */
+.photo {
+  object-fit: cover;
+  object-position: var(--hero-photo-x, 88%) 50%;
+  transform-origin: var(--hero-photo-x, 88%) 55%;
+  animation: hero-drift 32s ease-in-out infinite alternate;
+}
+
+/* 夜の谷をゆっくり寄っていく(カメラがわずかに前進する程度) */
+@keyframes hero-drift {
+  from {
+    scale: 1;
+  }
+
+  to {
+    scale: 1.06;
+  }
+}
+
+/* WebGL2非対応環境: 写真の上に静的な霞を重ねる */
 .fallback {
   background:
-    radial-gradient(circle at 74% 22%, rgb(221 229 232 / 0.25), transparent 18%),
-    linear-gradient(180deg, #131c24 0%, #1c2833 55%, #2c3b46 100%);
+    linear-gradient(
+      180deg,
+      transparent 20%,
+      color-mix(in srgb, var(--c-kasumi) 22%, transparent) 55%,
+      color-mix(in srgb, var(--c-kasumi-usu) 16%, transparent) 80%,
+      transparent 100%
+    );
+}
+
+/* 見出しの可読性: 左下(テキスト側)を夜色で沈める */
+.scrim {
+  background:
+    linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--c-yoyama-fukai) 62%, transparent) 0%,
+      color-mix(in srgb, var(--c-yoyama-fukai) 18%, transparent) 55%,
+      transparent 80%
+    ),
+    linear-gradient(
+      0deg,
+      color-mix(in srgb, var(--c-yoyama-fukai) 70%, transparent) 0%,
+      transparent 55%
+    );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .photo {
+    animation: none;
+  }
 }
 
 .inner {

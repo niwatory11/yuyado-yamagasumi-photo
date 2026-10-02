@@ -1,11 +1,12 @@
 # 写真素材のクレジット
 
 本サイト(写真併用版)で使用している画像素材の出典一覧です。
-全5点とも、`docs/image-generation-prompts.md` のプロンプトで生成した**画像生成AI(ChatGPT / GPT Image)による生成イメージ**を、**「夜山×灯火」トーンへの色調加工(彩度調整・カラーグレーディング・クロップ)とWebP変換のうえ**使用しています。
+全6点とも、`docs/image-generation-prompts.md` のプロンプトで生成した**画像生成AI(ChatGPT / GPT Image)による生成イメージ**を、**「夜山×灯火」トーンへの色調加工(彩度調整・カラーグレーディング・クロップ)とWebP変換のうえ**使用しています。
 写真はすべてイメージであり、架空の宿「湯宿 山霞」とは関係ありません。
 
 | 使用箇所 | ファイル | 作者 | ライセンス | 出典 |
 |---|---|---|---|---|
+| ヒーロー背景 | `hero.webp` / `hero-960.webp` | ChatGPT(GPT Image)/ OpenAI | [OpenAI利用規約](https://openai.com/policies/terms-of-use/) | Codex CLIの画像生成(2026-10-02)。プロンプトは `docs/image-generation-prompts.md` 第3弾 |
 | 部屋「灯」 | `room-akari.webp` | ChatGPT(GPT Image)/ OpenAI | [OpenAI利用規約](https://openai.com/policies/terms-of-use/) | Codex CLIの画像生成(2026-10-02)。プロンプトは `docs/image-generation-prompts.md` 第2弾 |
 | 部屋「霞」 | `room-kasumi.webp` | ChatGPT(GPT Image)/ OpenAI | [OpenAI利用規約](https://openai.com/policies/terms-of-use/) | Codex CLIの画像生成(2026-10-02)。同上 |
 | 部屋「谺」 | `room-kodama.webp` | ChatGPT(GPT Image)/ OpenAI | [OpenAI利用規約](https://openai.com/policies/terms-of-use/) | Codex CLIの画像生成(2026-10-02)。同上 |

@@ -4,7 +4,7 @@
 
 架空の山あいの温泉旅館のブランドサイト。**Three.js等のライブラリを使わず、素のWebGL2と手書きGLSLシェーダー**で「霞・湯・灯り」を描く、没入型の1ページ構成レスポンシブサイトです。
 
-本リポジトリは[全編シェーダー版(yuyado-yamagasumi)](https://github.com/niwatory11/yuyado-yamagasumi)から派生した**写真併用バリアント**です。ヒーローの霞と触れる露天風呂はシェーダーのまま、部屋・料理・宿についての各セクションに画像生成AI(ChatGPT / GPT Image)で作った写真調の生成イメージを「夜山×灯火」トーンへ色調加工して組み込んでいます(出典とプロンプトは [docs/credits.md](docs/credits.md) / [docs/image-generation-prompts.md](docs/image-generation-prompts.md))。シェーダー表現と写真を同一トーンで混成させる、より商業案件に近い構成のデモです。
+本リポジトリは[全編シェーダー版(yuyado-yamagasumi)](https://github.com/niwatory11/yuyado-yamagasumi)から派生した**写真併用バリアント**です。ヒーローの霞と触れる露天風呂はシェーダーのまま(ヒーローは背景写真の上にGLSLの霞を重ねる構成)、ヒーロー背景と部屋・料理・宿についての各セクションに画像生成AI(ChatGPT / GPT Image)で作った写真調の生成イメージを「夜山×灯火」トーンへ色調加工して組み込んでいます(出典とプロンプトは [docs/credits.md](docs/credits.md) / [docs/image-generation-prompts.md](docs/image-generation-prompts.md))。シェーダー表現と写真を同一トーンで混成させる、より商業案件に近い構成のデモです。
 
 ![湯宿 山霞 ファーストビュー](docs/screenshots/hero-1440.png)
 
