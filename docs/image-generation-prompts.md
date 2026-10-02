@@ -4,7 +4,10 @@
 > 料理=案B と、宿・案Bを転用した部屋「谺」も一度組み込んだが、第2弾で差し替えた。
 >
 > **第2弾(2026-10-02)**: 部屋3室と料理を、本文(`src/data/inn.ts`)に合わせたプロンプトで再生成し差し替え。
-> プロンプトは末尾の「第2弾」節を参照。出典・ライセンスは `docs/credits.md` を参照。
+> プロンプトは「第2弾」節を参照。
+>
+> **第3弾(2026-10-02)**: ヒーロー背景を3案生成し、案A(山腹の一軒宿と月)を `hero.webp` として採用。
+> 霞は写真に描き込まず、GLSLシェーダー(`mist.frag.glsl`)が上に重ねる。出典・ライセンスは `docs/credits.md` を参照。
 
 対象(第1弾): 写真併用版「湯宿 山霞」の差し替え希望2箇所。
 
@@ -163,3 +166,21 @@ Landscape 3:2 photo. A small, simple 6-tatami Japanese room at night containing 
 ```text
 Landscape 4:3 photo. Salt-grilled iwana char fish, each on a single bamboo skewer pierced through the mouth, bodies gently curved in the traditional wavy odori-gushi style, standing upright in the ash around a glowing charcoal irori hearth in a dark Japanese mountain inn. Anatomically correct fish: one head, one tail, natural fins, coarse salt crusting the fins and tail, crisp golden skin. Four to five fish only, evenly spaced, ember glow lighting them from below, shallow depth of field.
 ```
+
+---
+
+## 第3弾(2026-10-02): ヒーロー背景
+
+霞はシェーダーが重ねるため、写真は「空気が澄んだ状態」で生成する(プロンプトで heavy fog を除外)。
+見出しが左下に乗るので左下3分の1は暗く静かに、宿は右半分の中ほどに置き、スマホの縦長クロップに耐える構図にした。
+3案(A: 山腹の一軒宿と月 / B: 残照の谷と宿の灯り / C: 渓谷越しの宿の軒)から、霞の帯が谷に重なり
+「霞の向こうに、湯の灯り」の構図になるAを採用。Bは残照のオレンジがトーンから外れ、Cは宿が近すぎて距離感が出なかった。
+
+後加工(ffmpeg): 彩度0.9倍。1536px幅(品質82)と960px幅(品質80)の2サイズをWebPで書き出し、`srcset` で出し分ける。
+
+### ヒーロー背景 → `hero.webp`(案A)
+
+```text
+Wide landscape 3:2 for a full-screen website hero. Composition: keep the lower-left third dark and calm with little detail (headline text will sit there); main point of interest in the right half around the middle height so it survives a tall vertical center crop on phones. Distant wide shot at nightfall of a small traditional wooden Japanese onsen inn nestled on a forested mountain slope, only a few warm paper windows glowing, a thin wisp of steam rising from behind the roof. Layered mountain ridges receding into blue-grey distance, deep blue night sky with a pale moon high on the right, faint stars. No other buildings.
+```
+
